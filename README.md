@@ -15,7 +15,7 @@
 
   ```shell
     export VER=v000 && git checkout master && git pull
-    git tag -fm ${VER} && git push --force origin ${VER}
+    git tag -fm master ${VER} && git push --force origin ${VER}
   ```
 
 * go to [releases](../../releases) and publish the recent draft after finish
