@@ -8,6 +8,8 @@ jobs:
   release:
     name: build and release
     runs-on: ubuntu-22.04
+    permissions:
+      contents: write
     steps:
       - name: checkout the repos
         uses: actions/checkout@v4
@@ -22,7 +24,7 @@ jobs:
         with:
           name: >-
             version ${{ github.ref_name }}
-            of ${{ github.repository }}
-          draft: true
+            of raven428 resume
+          allowUpdates: true
           artifacts: "*.pdf"
           body: automatic release from GitHub actions
