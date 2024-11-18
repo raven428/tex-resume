@@ -1,0 +1,84 @@
+\newcommand{\DocBody}[1]{
+  {\centering
+      Dmitry Sukhodoyev:
+      \IfStrEq{#1}{senior}{%
+        DevOps and site reliability engineer
+      }{%
+        lead of DevOps engineers team
+      }\par
+      Automated services, Redundancy, and Monitoring are my job, hobby, and entertainment\par
+      raven428@gmail.com, http://t.me/raven428, +1 650 457-05-49\par
+    }
+  \vspace{7pt}
+  \raggedright
+  \begin{list}{\fontspec{Roboto Serif}●}{
+      \setlength{\leftmargin}{11pt}
+      \setlength{\rightmargin}{0pt}
+      \setlength{\itemsep}{5pt}
+      \setlength{\parsep}{0pt}
+      \setlength{\topsep}{0pt}
+      \setlength{\partopsep}{0pt}
+      \setlength{\labelwidth}{5pt}
+      \setlength{\labelsep}{2pt}
+    }  \item \textbf{Essential skills and experience}: high load systems architect and performance specialist, public and private clouds with a microservices integration expert\par
+          \ul{network:} IP routing and switching, VLAN, OSPF, BGP\par
+          \ul{software:} Linux, Docker, Kubernetes, Terraform, Terragrunt, Grafana, ELK, GitLab, ArgoCD, OpenNebula, CEPH, FreeIPA, FreeBSD, ZFS, VMware, Puppet, Kickstart, Ansible, Nginx, OpenLDAP, Apache, ffmpeg, VLC, Cacti/RRDTool, BIND, Postfix, Dovecot2, CometBFT-based blockchains expert\par
+          \ul{databases:} MySQL, Oracle, MongoDB, Redis, PostgreSQL, Elasticsearch, Prometheus\par
+          \ul{programming:} Perl, Shell, Python, Rust, Golang, Ruby, SQL/PL (MySQL, Oracle), C/C++, Git\par
+          \ul{hardware:} Cisco UCS, Nexus, HP BladeSystem, Proliant, EMC Isilon, Clarion, Arbor\par
+          \ul{clouds:} GCP, AWS, Tencent, OCI, Buildkite, GitHub Actions, GitLab CI/CD
+
+    \item \textbf{Employment history:} {\fontspec{FreeSerif}}
+          \HistoryHead
+    \item \EmpDateRange{Aug 2021}{now}%
+          \IfStrEq{#1}{senior}{%
+            senior DevOps and site reliability engineer in
+          }{%
+            DevOps team lead of 4 engineers in
+          }%
+          Cosmos blockchain team, systems deployment, maintenances, lifecycle, and monitoring at P2P.org (Limassol, Cyprus, remote)
+          \PositonHead
+          TLDR stack: GCP, Tencent, Terraform, Terragrunt, Kubernetes, Docker, Ansible, Nginx, Grafana, Prometheus, GitOps, GitFlow, GitHub actions, Buildkite, CometBFT/Tendermint blockchains
+    \item I built from scratch deployment infrastructure based on the GitOps approach with Ansible and Terraform modules for Terragrunt with about 90\% code testing coverage: “promtool test rules” for Prometheus alerts, Molecule for Ansible roles, test deployments to GCP for Terragrunt
+    \item I collected from the whole company and migrated to infrastructure above all the CometBFT-based networks with their engineers. Moreover, educated them to deploy and improve IaC above
+    \item I mentored, educated existing and new team members by voice communication with screen sharing and made reviews for all the pull requests to the team IaC GitHub repository
+    \item I developed and started the on-call schedule between team members to reduce the load of each. By splitting duties to only updates and alerts for the engineer on duty when others can be free of charge to spend their time improving the code of infrastructure
+    \item The result exceeds 60 infrastructures with a room to grow for the team with four engineers
+  \end{list}
+  \item \EmpDateRange{Sep 2019}{Aug 2021}senior DevOps and site reliability engineer of the infrastructure team, systems, and servers deployment with maintenance at CloudLinux (Palo Alto, USA, remote)
+  \PositonHead
+  \item TLDR stack: AWS, Terraform, Kubernetes, Docker, Ansible, Nginx, Apache, MySQL, Grafana, Prometheus, Elasticsearch, Logstash, Kibana, Gitlab, GitOps, GitFlow, ArgoCD
+  \item I achieved a dramatic speed bust for deploying new hosts by full automation with Ansible. I developed roles for configuring most kinds of hosts and with all hosts in the inventory. Of course, all the things below I did with the Infrastructure As Code approach in Ansible above
+  \item I developed GitOps for Ansible code from GitLab. After publishing all the Ansible code to the default branch, it will instantly test in a VM deployed with Terraform in AWS and OpenNebula, then deployed to the Kubernetes cluster. I achieved this by GitLab pipelines with ArgoCD keeping sensitivity data in HashiCorp Vault
+  \item I moved deprecated Zabbix monitoring by developing Prometheus alertmanager alerting rules with Grafana visualization. I developed integrations with Atlassian OpsGenie and Alerta.io both to notify different kinds of on-call people
+  \item I collected all kinds of company backup tasks and united them to IaC. I developed cloud backup by uploading to available Google Drive space with encryption. Statuses of backup tasks collected to the monitoring system (see above) with notification of on-call people in case of failures
+  \item I actively participated in AlmaLinux infrastructure deployment and architecture development
+  \end{list}
+  \item \EmpDateRange{Sep 2017}{Aug 2019}senior DevOps and site reliability engineer, systems and servers deployment with maintenance at Ahrefs (San Francisco, USA, remote)
+  \PositonHead
+  \item TLDR stack: AWS, Terraform, Kubernetes, Docker, Puppet, Nginx, Apache, MySQL, Grafana, Prometheus, Elasticsearch, Logstash, Kibana, Buildkite, GitHub
+  \item I developed migration with Terraform bare-metal servers to AWS infrastructure
+  \item I developed Puppet master for managing 2000+ hosts of distributed systems
+  \item I deployed network monitoring using ELK stack, Grafana, and Prometheus
+  \item Troubleshoot integration and deployment of new projects into infrastructure
+  \item Installed, upgraded, and migrated several Elasticsearch clusters with petabytes of data
+  \item Performed mass server setup automation at Hetzner, OVH, Online, Serverius
+  \end{list}
+  \item \EmpDateRange{Sep 2014}{Sep 2017}senior DevOps and site reliability engineer, systems, and servers deployment with maintenance at Kartina Digital GmbH (Wiesbaden, Germany, remote)
+  \PositonHead
+  \item TLDR stack: Puppet, VMware, Cisco UCS, Lua, Nginx, video processing and streaming, AWS, Terraform, Kubernetes, Docker, Puppet, Nginx, Apache, MySQL, ELK, TeamCity
+  \item I achieved a centralized host configuration. Before I started working, all hosts were configured using pssh and pscp (parallel ssh/scp). I installed puppet master, collected configurations of all hosts, created roles for different kinds of hosts, and started configuration of all servers by Puppet agent
+  \item I achieved a fully virtualized environment. I deployed VMware vCenter Service Appliance with high-availability clusters at every data center; then, I moved all hosts to virtual machines. Now, bare-metal servers are hypervisors. If one of the hypervisors physically dies, the high-availability system will restart all virtual machines from dead hypervisors on available hypervisors: no more downtimes, don’t wake up an employee. Hardware maintenance also became easier: someone turns the hypervisor into maintenance mode, the cluster moves virtual machines to other available hypervisors, and the hypervisor is ready to disconnect the power
+  \item I achieved the full power of Cisco UCS for the company. Several of our hosts should be able to upload tens of gigabits per second of video streaming. All Cisco UCS network adapters are virtual, and the VMware ESXi hypervisor can move adapters between virtual machines. I merged vCenter Service Appliance with Cisco UCS Domains, and now numerous high-traffic hosts are virtual machines with pass-through and high-availability modes enabled. I described the whole process here: https://habrahabr.ru/post/303026 and here: https://yau.o6a.ru/wiki/ucs/vmware
+  \item I participated in other technologies: streaming and encoding services by OpenResty, ffmpeg and VLC; HP BladeSystem, Proliant, EMC Isilon, Clarion; converting of live video streams from any to any other types and formats: HTTP, UDP, TS, RTMP, FLV, RTMP, MPEG2, MPEG4, H.264, H.265; Arbor Networks hardware to DDoS mitigation; incremental backup, Cacti performance and M/Monit availability monitoring
+  \end{list}
+  \item \EmpDateRange{Nov 2010}{Aug 2014}chief developer, systems, servers, and network maintenance at Digital Networks (Miass city of Chelyabinsk region, Russia, remote). Several hundred hosts, incremental backup, availability and performance monitoring, high load web and MySQL servers, virtualization with VMware vSphere
+  \end{enumerate}
+  \item \textbf{Education:}
+  \PositonHead
+  \item Chelyabinsk State University, Bachelor of Computer Science
+  \item Cisco Data Center Unified Computing Implementation (DCUCI)
+  \item EMC Isilon Administration and Management (MR-1CP-ISIAM)
+  \end{list}
+  \end{list}
+}

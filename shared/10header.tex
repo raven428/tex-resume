@@ -1,0 +1,40 @@
+\documentclass[fontsize=12pt,oneside,a4paper]{scrartcl}
+\usepackage[margin=12mm,lmargin=9mm]{geometry}
+\usepackage{
+  fontspec,
+  soul,
+  enumitem,
+  xstring,
+}
+\linespread{1.11}
+\setlength{\parskip}{0pt}
+\setlength{\parindent}{0pt}
+\setmainfont{Source Serif Pro}
+\setul{1pt}{0.7pt}
+\newcommand{\EmpDateRange}[2]{
+  \ul{#1 \mbox{\fontspec{FreeSerif}–} #2:}
+}
+\newcommand{\PositonHead}{
+  \begin{list}{\fontspec{FreeSerif}▪}{
+    \setlength{\leftmargin}{5pt}
+    \setlength{\rightmargin}{0pt}
+    \setlength{\itemsep}{0pt}
+    \setlength{\parsep}{0pt}
+    \setlength{\topsep}{0pt}
+    \setlength{\partopsep}{0pt}
+    \setlength{\labelwidth}{3pt}
+    \setlength{\labelsep}{3pt}
+  }
+}
+\newcommand{\HistoryHead}{
+  \begin{enumerate}[
+    leftmargin=10pt,
+    rightmargin=0pt,
+    itemsep=0pt,
+    parsep=0pt,
+    topsep=0pt,
+    partopsep=0pt,
+    labelwidth=5pt,
+    labelsep=2pt
+  ]
+}
