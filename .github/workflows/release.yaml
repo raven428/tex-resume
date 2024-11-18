@@ -1,0 +1,28 @@
+---
+name: upload release
+on:
+  push:
+    tags:
+      - "*"
+jobs:
+  release:
+    name: build and release
+    runs-on: ubuntu-22.04
+    steps:
+      - name: checkout the repos
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+          submodules: recursive
+      - name: build PDFs
+        run: bin/build.sh
+      - name: make release and upload PDFs
+        uses: ncipollo/release-action@v1
+        with:
+          name: >-
+            version ${{ github.ref_name }}
+            of ${{ github.repository }}
+          draft: true
+          artifacts: "*.pdf"
+          body: automatic release from GitHub actions
