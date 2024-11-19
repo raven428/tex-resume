@@ -12,10 +12,26 @@ jobs:
     name: build PDFs
     timeout-minutes: 22
     runs-on: ubuntu-22.04
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           submodules: true
       - name: build PDFs
+        if: >-
+          github.event_name == 'pull_request' ||
+          (github.event_name == 'schedule' &&
+          github.ref == 'refs/heads/master')
         run: bin/build.sh
+      - name: make release and upload PDFs
+        if: github.event_name == 'schedule' && github.ref == 'refs/heads/master'
+        uses: ncipollo/release-action@v1
+        with:
+          name: raven428 ${{ github.head_ref }} resume
+          draft: true
+          allowUpdates: true
+          tag: v999
+          artifacts: "*.pdf"
+          body: raven428 ${{ github.head_ref }} resume from schedule of GitHub actions
