@@ -24,11 +24,12 @@ if [[ "$(
   # shellcheck disable=2086
   /usr/bin/env \
     docker run -it -d --name="${TEXLIVE_CONT_NAME}" --rm \
-    -v "$(pwd):/workdir" texlive/texlive ${TEXLIVE_CONT_COMMAND}
+    -v "$(pwd):/workdir" ghcr.io/raven428/container-images/texlive-myminimal:latest \
+    ${TEXLIVE_CONT_COMMAND}
   /usr/bin/env
-    docker exec "${TEXLIVE_CONT_NAME}" rm -rfv \
+  docker exec "${TEXLIVE_CONT_NAME}" rm -rfv \
     /usr/local/texlive/2024/texmf-dist/fonts/type1/adobe
 fi
 for texfile in "${MY_PATH}/../"*.tex; do
-    docker exec -w /workdir "${TEXLIVE_CONT_NAME}" xelatex "$(basename "${texfile}")"
+  docker exec -w /workdir "${TEXLIVE_CONT_NAME}" xelatex "$(basename "${texfile}")"
 done
