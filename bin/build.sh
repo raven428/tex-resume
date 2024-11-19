@@ -5,6 +5,7 @@ set -ueo pipefail
 # shellcheck disable=1091
 MY_BIN="$(readlink -f "$0")"
 MY_PATH="$(dirname "${MY_BIN}")"
+#
 if [[ "$(
   /usr/bin/env docker inspect "${TEXLIVE_CONT_NAME}" -f "
     {{- range .Mounts -}}
