@@ -21,17 +21,25 @@ jobs:
           submodules: true
       - name: build PDFs
         if: >-
-          github.event_name == 'pull_request' ||
-          (github.event_name == 'schedule' &&
-          github.ref == 'refs/heads/master')
-        run: bin/build.sh
+          github.event_name == 'pull_request' || (
+            (github.event_name == 'schedule' || github.event_name == 'push')
+          ) && github.ref == 'refs/heads/master'
+        run: set ; bin/build.sh
       - name: make release and upload PDFs
-        if: github.event_name == 'schedule' && github.ref == 'refs/heads/master'
+        if: >-
+          (github.event_name == 'schedule' || github.event_name == 'push')
+          && github.ref == 'refs/heads/master'
         uses: ncipollo/release-action@v1
         with:
-          name: raven428 ${{ github.head_ref }} resume
+          name: >
+            raven428 ${{
+              github.head_ref == '' && github.ref_name || github.head_ref
+            }} resume
           draft: true
           allowUpdates: true
           tag: v999
           artifacts: "*.pdf"
-          body: raven428 ${{ github.head_ref }} resume from schedule of GitHub actions
+          body: >
+            raven428 ${{
+              github.head_ref == '' && github.ref_name || github.head_ref
+            }} resume from schedule of GitHub actions
