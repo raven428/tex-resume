@@ -32,14 +32,14 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           name: >
-            raven428 ${{
+            branch [${{
               github.head_ref == '' && github.ref_name || github.head_ref
-            }} resume
+            }}] resume
           draft: true
           allowUpdates: true
           tag: v999
           artifacts: "*.pdf"
           body: >
-            raven428 ${{
+            branch [${{
               github.head_ref == '' && github.ref_name || github.head_ref
-            }} resume from schedule of GitHub actions
+            }}] resume from recent commit by GitHub actions
