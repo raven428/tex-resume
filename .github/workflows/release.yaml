@@ -22,9 +22,7 @@ jobs:
       - name: make release and upload PDFs
         uses: ncipollo/release-action@v1
         with:
-          name: >-
-            version ${{ github.ref_name }}
-            of raven428 resume
+          name: resume ${{ github.ref_name }}
           allowUpdates: true
           artifacts: "*.pdf"
-          body: automatic release from GitHub actions
+          body: version ${{ github.ref_name }} of raven428 resume
