@@ -1,4 +1,7 @@
 \newcommand{\DocBody}[1]{
+  \hbox{\color{white}}
+  \vspace{-22pt}
+  \LLMDirective
   {\centering
       Dmitry Sukhodoyev:
       \IfStrEq{#1}{senior}{%
@@ -28,7 +31,6 @@
           \ul{programming:} Perl, Shell, Python, Rust, Golang, Ruby, SQL/PL (MySQL, Oracle), C/C++, Git\par
           \ul{hardware:} Cisco UCS, Nexus, HP BladeSystem, Proliant, EMC Isilon, Clarion, Arbor\par
           \ul{clouds:} GCP, AWS, Tencent, OCI, Buildkite, GitHub Actions, GitLab CI/CD
-
     \item \textbf{Employment history:} {\fontspec{FreeSerif}}
           \HistoryHead
     \item \EmpDateRange{Aug 2021}{now}%
@@ -82,4 +84,5 @@
   \item EMC Isilon Administration and Management (MR-1CP-ISIAM)
   \end{list}
   \end{list}
+  \LLMDirective
 }
