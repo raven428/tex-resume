@@ -14,6 +14,6 @@
 * make tag and send to release:
 
   ```shell
-    export VER=v002 && git checkout master && git pull
+    export VER=v003 && git checkout master && git pull
     git tag -fm master ${VER} && git push --force origin ${VER}
   ```
