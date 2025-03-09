@@ -1,3 +1,4 @@
+# kics-scan disable=555ab8f9-2001-455e-a077-f2d0f41e2fb9
 ---
 name: build PDFs
 on:
@@ -43,3 +44,16 @@ jobs:
             branch [${{
               github.head_ref == '' && github.ref_name || github.head_ref
             }}] resume from recent commit by GitHub actions
+  linters:
+    name: check linters
+    timeout-minutes: 11
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: true
+      - name: MegaLinter
+        uses: oxsecurity/megalinter@v8
+        env:
+          VALIDATE_ALL_CODEBASE: true
