@@ -1,10 +1,12 @@
 # kics-scan disable=555ab8f9-2001-455e-a077-f2d0f41e2fb9
+# cspell:ignore zizmor
 ---
 name: upload release
 on:
   push:
     tags:
       - "*"
+permissions: {}
 jobs:
   release:
     name: build and release
@@ -13,15 +15,17 @@ jobs:
       contents: write
     steps:
       - name: checkout the repos
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7 # zizmor: ignore[unpinned-uses,superfluous-actions]
         with:
           fetch-depth: 0
           fetch-tags: true
           submodules: recursive
+          persist-credentials: false
       - name: build PDFs
         run: bin/build.sh
       - name: make release and upload PDFs
-        uses: ncipollo/release-action@v1
+        uses: ncipollo/release-action@v1 # zizmor: ignore[unpinned-uses]
+        # zizmor: ignore[superfluous-actions]
         with:
           name: resume ${{ github.ref_name }}
           allowUpdates: true
