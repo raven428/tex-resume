@@ -1,4 +1,5 @@
 # kics-scan disable=555ab8f9-2001-455e-a077-f2d0f41e2fb9
+# cspell:ignore zizmor
 ---
 name: build PDFs
 on:
@@ -8,6 +9,10 @@ on:
   pull_request:
   schedule:
     - cron: "11 11 * * 1"
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+permissions: {}
 jobs:
   build-n-push:
     name: build PDFs
@@ -16,10 +21,11 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7 # zizmor: ignore[unpinned-uses]
         with:
           fetch-depth: 0
           submodules: true
+          persist-credentials: false
       - name: build PDFs
         if: >-
           github.event_name == 'pull_request' || (
@@ -28,9 +34,11 @@ jobs:
         run: bin/build.sh
       - name: make draft and upload PDFs
         if: >-
-          (github.event_name == 'schedule' || github.event_name == 'push')
-          && github.ref == 'refs/heads/master'
-        uses: ncipollo/release-action@v1
+          github.event_name == 'pull_request' || (
+            (github.event_name == 'schedule' || github.event_name == 'push')
+          ) && github.ref == 'refs/heads/master'
+        uses: ncipollo/release-action@v1 # zizmor: ignore[unpinned-uses]
+        # zizmor: ignore[superfluous-actions]
         with:
           name: >
             branch [${{
@@ -49,11 +57,12 @@ jobs:
     timeout-minutes: 11
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7 # zizmor: ignore[unpinned-uses]
         with:
           fetch-depth: 0
           submodules: true
+          persist-credentials: false
       - name: MegaLinter
-        uses: oxsecurity/megalinter@v9
+        uses: oxsecurity/megalinter@v9 # zizmor: ignore[unpinned-uses]
         env:
           VALIDATE_ALL_CODEBASE: true
