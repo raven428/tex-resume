@@ -15,7 +15,7 @@ if [[ "$(
   " 2>/dev/null || true
 )" != "$(pwd)" ]]; then
   echo "path changed, destroying container…"
-  /usr/bin/env podman rm -f "${TEXLIVE_CONT_NAME}" 2>/dev/null || true
+  /usr/bin/env podman rm -ft0 "${TEXLIVE_CONT_NAME}" 2>/dev/null || true
 fi
 if [[ "$(
   /usr/bin/env podman container inspect -f '{{.State.Status}}' \
