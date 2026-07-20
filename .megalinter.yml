@@ -29,3 +29,4 @@ EDITORCONFIG_EDITORCONFIG_CHECKER_PRE_COMMANDS:
       chmod -v 755 /ec-custom.sh
     cwd: workspace
     continue_if_failed: True
+REPOSITORY_KINGFISHER_ARGUMENTS: "--exclude .git"
